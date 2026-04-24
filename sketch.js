@@ -77,7 +77,7 @@ function draw() { // main loop. Repeats constantly
     textSize(32); // Makes the text element below big.
     text("GAME OVER", width/2, height/2); // Writes the text in middle of game space (cord: 200,200)
     noLoop(); // Stop the game (stops draw())
-  } else if (brickHit = rows*cols) { /// If all blocks has been hit
+  } else if (brickHit == rows*cols) { /// If all blocks has been hit
       fill(255, 0, 0); // Sets the whole game to have a black background
     textAlign(CENTER); // Algins the text element below to center
     textSize(32); // Makes the text element below big.
