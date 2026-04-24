@@ -2,6 +2,7 @@ let ballX, ballY, dx, dy; // initalizes variables the position of the ball, and 
 let paddleX, paddleW = 80, paddleH = 10; // sets the size dimensions of the paddle
 let bricks = []; // array that stores brick blocs
 let rows = 4, cols = 5, brickW = 70, brickH = 20; //sets how many rows and how many columns and the brick dimenson
+let brickHit = 0; //counts have many blocks has been hit
 
 function setup() {
   createCanvas(400, 400); //creates the game space (width: 400 by height: 400 cordinate grid)
@@ -63,6 +64,7 @@ function draw() { // main loop. Repeats constantly
       // Collision Check: Is the ball inside the brick's rectangle?
       if (ballX > b.x && ballX < b.x + brickW && ballY > b.y && ballY < b.y + brickH) {
         b.active = false; // Brick disappears
+        brickHit = brickHit+1; // Adds 1 to the total number of bricks that has been hit
         dy *= -1;         // Ball bounces
       }
     }
@@ -75,11 +77,11 @@ function draw() { // main loop. Repeats constantly
     textSize(32); // Makes the text element below big.
     text("GAME OVER", width/2, height/2); // Writes the text in middle of game space (cord: 200,200)
     noLoop(); // Stop the game (stops draw())
-  } else if (ballY < 0) { /// If the ball hits the top of our game space
-    fill(255, 0, 0); // Sets the whole game to have a black background
-    textAlign(CENTER); // Algins the text element below to center 
+  } else if (brickHit = rows*cols) { /// If all blocks has been hit
+      fill(255, 0, 0); // Sets the whole game to have a black background
+    textAlign(CENTER); // Algins the text element below to center
     textSize(32); // Makes the text element below big.
-    text("YOU WIN!", width/2, height/2); // Writes the text (cord: 200,200)
+    text("YOU WIN", width/2, height/2); // Writes the text in middle of game space (cord: 200,200)
     noLoop(); // Stop the game (stops draw())
   }
 }
