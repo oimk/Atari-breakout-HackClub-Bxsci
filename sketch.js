@@ -4,7 +4,7 @@ let bricks = []; // array that stores brick blocs
 let rows = 4, cols = 5, brickW = 70, brickH = 20; //sets how many rows and how many columns and the brick dimenson
 
 function setup() {
-  createCanvas(400, 400); //creates the game space (400 by 400 cordinate grid)
+  createCanvas(400, 400); //creates the game space (width: 400 by height: 400 cordinate grid)
   resetGame(); // runs the resetGame method
   
   // create the grid of bricks
@@ -69,11 +69,17 @@ function draw() { // main loop. Repeats constantly
   }
   
   // 5. Game Over
-  if (ballY > height) { // If ball escape from the top of our game
-    fill(255, 0, 0); // Color game black
+  if (ballY > height) { // If ball hits bottom of our game space
+    fill(255, 0, 0); // Sets the whole game to have a black background
     textAlign(CENTER); // Algins the text element below to center
     textSize(32); // Makes the text element below big.
-    text("GAME OVER", width/2, height/2); // Writes the text
+    text("GAME OVER", width/2, height/2); // Writes the text in middle of game space (cord: 200,200)
+    noLoop(); // Stop the game (stops draw())
+  } else if (ballY < 0) { /// If the ball hits the top of our game space
+    fill(255, 0, 0); // Sets the whole game to have a black background
+    textAlign(CENTER); // Algins the text element below to center 
+    textSize(32); // Makes the text element below big.
+    text("YOU WIN!", width/2, height/2); // Writes the text (cord: 200,200)
     noLoop(); // Stop the game (stops draw())
   }
 }
